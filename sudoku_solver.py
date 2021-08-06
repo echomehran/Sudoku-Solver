@@ -1,3 +1,6 @@
+from puzzle_generator import board
+
+
 def solve(bo):
     find = find_empty(bo)
     if not find:
@@ -40,7 +43,7 @@ def valid(bo, num, pos):
 def print_board(bo):
     for i in range(len(bo)):
         if i % 3 == 0 and i != 0:
-            print("- - - - - - - - - - - - - ")
+            print("------------------------")
 
         for j in range(len(bo[0])):
             if j % 3 == 0 and j != 0:
@@ -56,6 +59,14 @@ def find_empty(bo):
     for i in range(len(bo)):
         for j in range(len(bo[0])):
             if bo[i][j] == 0:
-                return (i, j)
+                return i, j
 
     return None
+
+
+if __name__ == '__main__':
+    print('\n*** The early board ***\n')
+    print_board(board)
+    solve(board)
+    print('\n*** Solved ***\n')
+    print_board(board)
